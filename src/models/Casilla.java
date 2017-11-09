@@ -11,4 +11,5 @@ package models;
  */
 public class Casilla {
     //Erik
+    int puntuacion;
 }
