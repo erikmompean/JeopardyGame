@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package views;
-
-import javax.swing.JFrame;
+package models;
 
 /**
  *
  * @author Manel
  */
-public class Podium extends JFrame{
-    //Manel
-    
+public class Pregunta {
     
 }
