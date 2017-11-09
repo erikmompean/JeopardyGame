@@ -5,10 +5,14 @@
  */
 package controllers;
 
+import views.Podium;
+
 /**
  *
  * @author Manel
  */
 public class PodiumController {
     //Manel
+    private Podium podio;
+    
 }
