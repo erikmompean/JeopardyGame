@@ -17,7 +17,6 @@ public class Jeopardy {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Esto es una prueba");
-        System.out.println("lelelele");
     }
     
 }
