@@ -12,4 +12,6 @@ package models;
 public class Casilla {
     //Erik
     int puntuacion;
+    String pregunta;
+    String[] respuesta =  new String[4];
 }
