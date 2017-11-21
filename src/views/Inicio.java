@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -37,13 +38,13 @@ public class Inicio extends JFrame {
     public JTextField player1;
     public JTextField player2;
     public JButton butonInicio;
-    Border bordejpanel = new TitledBorder(new EtchedBorder(80, Color.yellow, Color.black), "Inicio: ");
-
+   // Border bordejpanel = new TitledBorder(new EtchedBorder(100, Color.yellow, Color.black), "Inicio: ");
+   
     public Inicio() {
         super("JEOPARDY");
-        this.setPreferredSize(new Dimension(1000, 1000));
+        this.setPreferredSize(new Dimension(1000, 800));
         // this.setTitle("JEOPARDY");
-
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(this.getContentPane());
         // background.setOpaque(true);
@@ -69,11 +70,14 @@ public class Inicio extends JFrame {
         welcome = new JLabel("Bienvenido a JEOPARDY");
         welcome.setHorizontalAlignment(SwingConstants.CENTER);
         welcome.setOpaque(true);
+        welcome.setFont(new Font("Comic Sans",Font.CENTER_BASELINE,30));
+        
         pane.add(welcome, BorderLayout.NORTH);
 
         player1 = new JTextField("NickName1");
         player2 = new JTextField("NickName2");
-
+        player1.setFont(new Font("Arial",Font.ITALIC,30));
+        player2.setFont(new Font("Arial",Font.ITALIC,30));
         player1.setOpaque(true);
 
         // pane.add(player1, BorderLayout.NORTH);
@@ -85,19 +89,19 @@ public class Inicio extends JFrame {
         
         player1.setHorizontalAlignment(SwingConstants.CENTER);
         textFields.add(player1);
+       
+        //textFields.setBorder(bordejpanel);
         
-        textFields.setBorder(bordejpanel);
-        
-        background = new JLabel();
-        ImageIcon icon = new ImageIcon("./imagenes/Jeopardy.jpg", "Jeopardy");
-        background.setIcon(icon);
-        textFields.add(background);
         
         
         player2.setHorizontalAlignment(SwingConstants.CENTER);
         textFields.add(player2);
         
         
+        background = new JLabel();
+        ImageIcon icon = new ImageIcon("./imagenes/Jeopardy.jpg", "Jeopardy");
+        background.setIcon(icon);
+        textFields.add(background);
         pane.add(textFields);
 
         player1.setToolTipText("Introduce el NickName de Jugador1 aqui ");
@@ -105,11 +109,12 @@ public class Inicio extends JFrame {
 
         butonInicio = new JButton("A Jugar !! ");
 
-        butonInicio.setPreferredSize(new Dimension(100, 20));
+//        butonInicio.setPreferredSize(new Dimension(100, 20));
 
         JPanel botones = new JPanel(new BorderLayout());
+        butonInicio.setFont(new Font("Comic Sans",Font.ITALIC,100));
         botones.add(butonInicio);
-
+        
         pane.add(botones, BorderLayout.SOUTH);
 
         butonInicio.setToolTipText("Pulsa aqui para iniciar una nueva aventura en Jeopardy !");

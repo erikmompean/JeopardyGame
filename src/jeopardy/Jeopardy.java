@@ -5,6 +5,7 @@
  */
 package jeopardy;
 
+import views.Inicio;
 import views.Podium;
 
 /**
@@ -19,7 +20,7 @@ public class Jeopardy {
     public static void main(String[] args) {
         // TODO code application logic here
         
-         Podium view = new Podium();
+         //Podium view = new Podium();
          
     }
     
