@@ -22,59 +22,63 @@ import javax.swing.border.Border;
  * @author Manel
  */
 public class TableroView extends JFrame {
-    //Erik
 
+    final int COLUMNS = 6;
+    final int ROWS = 6;
     JPanel topPanel;
     JPanel middlePanel;
+    JButton[][] allButtons = new JButton[COLUMNS][ROWS];
     final static int MAXGAP = 20;
 
-    public TableroView(String title) {
-        super(title);
+    public TableroView(String title){
+    super(title);
 
-        addPanels();
-        Dimension d = new Dimension(1000, 1000);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.setPreferredSize(d);
-        this.setResizable(false);
-        this.pack();
-        this.setVisible(true);
+    addPanels();
+    Dimension d = new Dimension(1000, 1000);
+    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+
+    this.setPreferredSize(d);
+    this.setResizable(false);
+    this.pack();
+    this.setVisible(true);
 
     }
 
     private void createTopPanel() {
-        topPanel = new JPanel(new BorderLayout());
-        JPanel leftFlow = new JPanel();
-        JPanel rightFlow = new JPanel();
-        int anchuraTablero = this.getContentPane().getWidth();
-        topPanel.setPreferredSize(new Dimension(anchuraTablero, 50));
-        JLabel playerLeftName = new JLabel("Player1");
-        JLabel playerRightName = new JLabel("Player2");
+            topPanel = new JPanel(new BorderLayout());
+            JPanel leftFlow = new JPanel();
+            JPanel rightFlow = new JPanel();
+            int anchuraTablero = this.getContentPane().getWidth();
+            topPanel.setPreferredSize(new Dimension(anchuraTablero,50));
+            JLabel playerLeftName = new JLabel("Player1");
+            JLabel playerRightName = new JLabel("Player2");
 
-        JLabel puntuacion1 = new JLabel("1000");
-        JLabel puntuacion2 = new JLabel("3000");
+            JLabel puntuacion1 = new JLabel("1000");
+            JLabel puntuacion2 = new JLabel("3000");
 
-        topPanel.add(leftFlow, BorderLayout.WEST);
-        topPanel.add(rightFlow, BorderLayout.EAST);
-        leftFlow.add(playerLeftName);
-        leftFlow.add(puntuacion1);
+            topPanel.add(leftFlow, BorderLayout.WEST);
+            topPanel.add(rightFlow, BorderLayout.EAST);
+            leftFlow.add(playerLeftName);
+            leftFlow.add(puntuacion1);
 
-        rightFlow.add(puntuacion2);
-        rightFlow.add(playerRightName);
+            rightFlow.add(puntuacion2);
+            rightFlow.add(playerRightName);
+
 
     }
 
     private void createMiddlePanel() {
         middlePanel = new JPanel();
-        GridLayout gameLayout = new GridLayout(6, 6);
+        GridLayout gameLayout =new GridLayout(6, 6);
         middlePanel.setLayout(gameLayout);
 
-        //Add buttons to experiment with Grid Layout
-        for (int i = 1; i <= 36; i++) {
-            JButton button = new JButton("Button" + i);
-            button.setBackground(Color.lightGray);
-            middlePanel.add(button);
-
+        for(int i = 1; i <= COLUMNS;i++) {
+            for (int j = 0; j < ROWS; j++) {
+                JButton button = new JButton("Button" + i);
+                button.setBackground(Color.lightGray);
+                middlePanel.add(button);
+            }
         }
 
     }
