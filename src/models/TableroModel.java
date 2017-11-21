@@ -12,13 +12,13 @@ import javax.swing.Timer;
  *
  * @author Manel
  */
-public class Tablero {
+public class TableroModel {
     //Erik
     ArrayList<Casilla> casillas;
     Timer contador;
     Jugador jugador1, jugador2;
 
-    public Tablero(ArrayList<Casilla> casillas, Jugador jugador1, Jugador jugador2) {
+    public TableroModel(ArrayList<Casilla> casillas, Jugador jugador1, Jugador jugador2) {
         this.casillas = casillas;
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;

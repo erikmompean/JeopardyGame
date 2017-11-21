@@ -7,6 +7,7 @@ package jeopardy;
 
 import views.Inicio;
 import views.Podium;
+import views.TableroView;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Jeopardy {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        TableroView tab = new TableroView("Tablero");
          //Podium view = new Podium();
          
     }
