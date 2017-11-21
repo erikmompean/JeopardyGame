@@ -5,10 +5,85 @@
  */
 package views;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
 /**
  *
  * @author Manel
  */
-public class Tablero {
-    //Julen
+public class Tablero extends JFrame{
+    //Erik
+	
+	JPanel topPanel;
+	JPanel middlePanel;
+	final static int MAXGAP = 20;
+	public Tablero(String title){
+		super(title);
+
+		
+		addPanels();
+		Dimension d = new Dimension(1000, 1000);
+		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		
+		this.setPreferredSize(d);
+        this.setResizable(false);
+        this.pack();
+		this.setVisible(true);
+		
+	}
+	
+	private void createTopPanel() {
+		topPanel = new JPanel(new BorderLayout());
+		JPanel leftFlow = new JPanel();
+		JPanel rightFlow = new JPanel();
+		int anchuraTablero = this.getContentPane().getWidth();
+		topPanel.setPreferredSize(new Dimension(anchuraTablero,50));
+		JLabel playerLeftName = new JLabel("Player1");
+		JLabel playerRightName = new JLabel("Player2");
+		
+		JLabel puntuacion1 = new JLabel("1000");
+		JLabel puntuacion2 = new JLabel("3000");
+		
+		topPanel.add(leftFlow, BorderLayout.WEST);
+		topPanel.add(rightFlow, BorderLayout.EAST);
+		leftFlow.add(playerLeftName);
+		leftFlow.add(puntuacion1);
+		
+		rightFlow.add(puntuacion2);
+		rightFlow.add(playerRightName);
+
+		
+	}
+	
+	private void createMiddlePanel() {
+		middlePanel = new JPanel();
+		GridLayout gameLayout =new GridLayout(6, 6);
+		middlePanel.setLayout(gameLayout);
+		
+        //Add buttons to experiment with Grid Layout
+		for(int i = 0; i <= 36;i++) {
+			middlePanel.add(new JButton("Button" + i));
+		}
+        
+
+		
+	}
+	
+	private void addPanels() {
+		createTopPanel();
+		createMiddlePanel();
+		
+		this.add(topPanel, BorderLayout.PAGE_START);
+		this.add(middlePanel, BorderLayout.CENTER);
+	}
 }

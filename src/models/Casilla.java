@@ -25,9 +25,9 @@ public class Casilla {
             for(int i = 0; i < respuestas.length ;i++){
                 this.respuestas[i] = respuestas[i];
             }
-        }else{
+        }/*else{
             //TODO error system
-        }
+        }*/
     }
 
     public int getPuntuacion() {
