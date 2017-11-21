@@ -71,8 +71,11 @@ public class Tablero extends JFrame{
 		middlePanel.setLayout(gameLayout);
 		
         //Add buttons to experiment with Grid Layout
-		for(int i = 0; i <= 36;i++) {
-			middlePanel.add(new JButton("Button" + i));
+		for(int i = 1; i <= 36;i++) {
+                    JButton button = new JButton("Button" + i);
+                    button.setBackground(Color.lightGray);
+			middlePanel.add(button);
+                        
 		}
         
 
