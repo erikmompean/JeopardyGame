@@ -8,8 +8,12 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -18,19 +22,38 @@ import javax.swing.JLabel;
 public class Podium extends JFrame {
 
     //Manel
-    public JLabel podio;
+    public JLabel pos1;
+     public JLabel pos2;
+    public JLabel titulo;
 
     public Podium() {
         this.setTitle("PODIO DE JUGADORES");
+        this.setPreferredSize(new Dimension(400, 90));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addComponentsToPane(this.getContentPane());
+        this.setResizable(false);
+        this.pack();
+        this.setVisible(true);
     }
 
-    private void addComponentsToPane(Container contentPane) {
-        contentPane.setLayout(new BorderLayout(8, 8));
-       podio.setOpaque(true);
-	podio.setBackground(Color.WHITE); 
-	contentPane.add(podio, BorderLayout.NORTH);
+    private void addComponentsToPane(Container pane) {
+        titulo = new JLabel("PODIUM JUGADORES");
+        titulo.setOpaque(true);
+        pane.add(titulo);
+
+        pos1 = new JLabel("NikName de jugador Ganador");
+        pos2= new JLabel("NikName de jugador PERDEDOR");
+       
+        JPanel ganador = new JPanel();
+        ganador.setBackground(Color.GREEN);
+        ganador.add(pos1, BorderLayout.NORTH);
+        
+        pane.add(ganador);
+        JPanel perdedor = new JPanel();
+        perdedor.add(pos2);
+        perdedor.setBackground(Color.RED);
+        pane.add(perdedor, BorderLayout.SOUTH);
+
     }
 
 }
