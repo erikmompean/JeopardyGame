@@ -5,10 +5,24 @@
  */
 package controllers;
 
+import models.Jugador;
+import views.TableroView;
+
 /**
  *
  * @author Manel
  */
 public class ControllerPartida {
-   //Julen 
+    Jugador player1;
+    Jugador player2;
+    TableroView tablero;
+
+    public ControllerPartida(Jugador player1, Jugador player2, TableroView tablero) {
+        this.player1 = player1;
+        this.player2 = player2;
+        this.tablero = tablero;
+    }
+    
+
+   
 }
