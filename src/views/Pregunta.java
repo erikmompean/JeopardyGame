@@ -11,4 +11,5 @@ package views;
  */
 public class Pregunta {
     //Manel
+    
 }

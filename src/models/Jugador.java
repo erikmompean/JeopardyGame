@@ -14,12 +14,12 @@ public class Jugador {
     String nickName;
     int puntuacion;
 
-    public Jugador(String nickName1) {
-        this.nickName = nickName1;
+    public Jugador(String nickName) {
+        this.nickName = nickName;
         this.puntuacion =0;
     }
 
-    public String getNickName1() {
+    public String getNickName() {
         return nickName;
     }
 
@@ -27,8 +27,8 @@ public class Jugador {
         return puntuacion;
     }
 
-    public void setNickName1(String nickName1) {
-        this.nickName = nickName1;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public void setPuntuacion(int puntuacion) {
