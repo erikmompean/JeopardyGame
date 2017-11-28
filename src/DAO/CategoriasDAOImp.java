@@ -41,11 +41,29 @@ public class CategoriasDAOImp implements CategoriasDAO {
 
     public void crearCategorias(ArrayList<Path> paths) {
         
+        ArrayList<Categoria> categorias;
         for (Path file : paths) {
             BufferedReader br=null;
             try{
-                br=Files.newBufferedReader(file,java.nio.charset.StandardCharsets.UTF_8);
+                /**
+                 * coger el nombre del fichero y crear una categoria a partir de el
+                 */
+                br = Files.newBufferedReader(file,java.nio.charset.StandardCharsets.UTF_8);
+                /**
+                 * Crear un while y recorrer lineas leyendo el fichero 
+                 */
+                String linea;
+                while((linea = br.readLine()) != null){
+                                    /**
+                 * Por cada linea hacer un split y crear las preguntas a partir de el array devuelto por el split
+                 */
                 
+                /**
+                 * Añadir preguntas al array "categorias"
+                 */
+                }
+               
+
             }catch(IOException ex){
                 System.out.println("--------");
             }finally{

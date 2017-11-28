@@ -11,7 +11,6 @@ package models;
  */
 public class Categoria {
     //Manel
-    int id;
     String nombre;
     Pregunta preguntas;
 }
