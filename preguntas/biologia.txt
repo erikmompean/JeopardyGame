@@ -1,0 +1,5 @@
+biologia;que hacen las plantas;a;b;c;0;100
+biologia;que hacen las plantas;a;b;c;1;200
+biologia;que hacen las plantas;a;b;c;2;300
+biologia;que hacen las plantas;a;b;c;0;400
+biologia;que hacen las plantas;a;b;c;1;500
