@@ -1,5 +1,5 @@
-historia;quien es napoleon?;a;b;c;0;100
-historia;quien es napoleon?;a;b;c;1;200
-historia;quien es napoleon?;a;b;c;2;300
-historia;quien es napoleon?;a;b;c;0;400
-historia;quien es napoleon?;a;b;c;1;500
+quien es napoleon?;a;b;c;0;100
+quien es napoleon?;a;b;c;1;200
+quien es napoleon?;a;b;c;2;300
+quien es napoleon?;a;b;c;0;400
+quien es napoleon?;a;b;c;1;500

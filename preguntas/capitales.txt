@@ -1,5 +1,5 @@
-Capitales;cual es la capital de españa?;a;b;c;0;100
-Capitales;cual es la capital de alemania?;a;b;c;1;200
-Capitales;cual es la capital de francia?;a;b;c;2;300
-Capitales;cual es la capital de portugal?;a;b;c;0;400
-Capitales;cual es la capital de japon?;a;b;c;1;500
+cual es la capital de espana?;a;b;c;0;100
+cual es la capital de alemania?;a;b;c;1;200
+cual es la capital de francia?;a;b;c;2;300
+cual es la capital de portugal?;a;b;c;0;400
+cual es la capital de japon?;a;b;c;1;500

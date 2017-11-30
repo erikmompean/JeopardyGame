@@ -1,7 +1,7 @@
 como se llama el protagonista?;a;b;c;1;100
-juego de tronos;como se llama el protagonista?;a;b;c;2;200
-juego de tronos;como se llama el protagonista?;a;b;c;0;300
-juego de tronos;como se llama el protagonista?;a;b;c;1;400
-juego de tronos;como se llama el protagonista?;a;b;c;2;500
+como se llama el protagonista?;a;b;c;2;200
+como se llama el protagonista?;a;b;c;0;300
+como se llama el protagonista?;a;b;c;1;400
+como se llama el protagonista?;a;b;c;2;500
 
 
