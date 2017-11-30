@@ -30,14 +30,14 @@ public class CategoriasDAOImp implements CategoriasDAO {
     public ArrayList<Categoria> cargarTodas() {
         Path path = Paths.get("preguntas");
         ArrayList<Path> arrayPaths = new ArrayList();
-         ArrayList<Categoria> categorias= null ;
+        ArrayList<Categoria> categorias = null;
         try {
             DirectoryStream<Path> stream = Files.newDirectoryStream(path);
             for (Path file : stream) {
                 arrayPaths.add(file);
-          
+
             }
-            categorias= crearCategorias(arrayPaths);
+            categorias = crearCategorias(arrayPaths);
         } catch (IOException ex) {
             Logger.getLogger(CategoriasDAOImp.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,7 +47,7 @@ public class CategoriasDAOImp implements CategoriasDAO {
     /**
      * coger el nombre del fichero y crear una categoria a partir de el
      */
-    public ArrayList<Categoria> crearCategorias(ArrayList<Path> paths) {
+    public ArrayList<Categoria> crearCategorias(ArrayList<Path> paths){
 
         ArrayList<Categoria> categorias = new ArrayList<>();
         for (Path file : paths) {
@@ -57,14 +57,20 @@ public class CategoriasDAOImp implements CategoriasDAO {
                 br = Files.newBufferedReader(file);
 
                 String linea;
-                String[] aux = null;
+                String[] aux;
                 HashMap<Integer, Pregunta> preguntas = new HashMap<>();
                 int counter = 0;
+                
                 while ((linea = br.readLine()) != null) {
+                    //añadimos al array aux el valos de linea dividido por ";"
                     aux = linea.split(";");
+                    //añadimos los datos que se encuentran el la posicion 1,2,3 del array aux en respostes
                     String[] respostes = {aux[1], aux[2], aux[3]};
-                    Pregunta pregunta = new Pregunta(counter, aux[0], respostes, Integer.parseInt(aux[4]));
+                    //creamos una pregunta
+                    Pregunta pregunta = new Pregunta(counter, aux[0], respostes, Integer.parseInt(aux[5]));
+                    
                     counter++;
+                        
                     preguntas.put(counter, pregunta);
 
                 }
@@ -77,16 +83,8 @@ public class CategoriasDAOImp implements CategoriasDAO {
 
             } catch (IOException ex) {
                 System.out.println("--------");
-            } finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    } catch (IOException ex) {
-                        System.out.println("---------");
-                    }
-
-                }
-            }
+            } 
+                
         }
         return categorias;
 
