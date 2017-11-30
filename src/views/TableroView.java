@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -24,11 +26,14 @@ import javax.swing.border.Border;
  */
 public class TableroView extends JFrame {
 
+    final int CATEGORIAS = 6;
     final int COLUMNS = 6;
     final int ROWS = 5;
     JPanel topPanel;
     JPanel middlePanel;
     JPanel bottomPanel;
+    //public  Queue<JButton> botonesCategoria = new LinkedList<>();
+    public JButton[] botonesCategoria = new JButton[CATEGORIAS];
     JButton[][] allButtons = new JButton[COLUMNS][ROWS];
     final static int MAXGAP = 20;
 
@@ -46,9 +51,7 @@ public class TableroView extends JFrame {
     }
 
     private void createTopPanel() {
-        
-        
-        
+
         topPanel = new JPanel(new BorderLayout());
         JPanel leftFlow = new JPanel();
         JPanel rightFlow = new JPanel();
@@ -80,7 +83,7 @@ public class TableroView extends JFrame {
 
                 JButton button = new JButton("Button" + i);
                 button.setBackground(Color.lightGray);
-                button.setPreferredSize(new Dimension(80, 80));
+                button.setPreferredSize(new Dimension(200, 150));
                 bottomPanel.add(button);
             }
         }
@@ -90,17 +93,20 @@ public class TableroView extends JFrame {
     private void createMiddlePanel() {
         middlePanel = new JPanel();
         final int CATEGORY_ROW = 1;
-        final int CATEGORY_COL = 6;
-        GridLayout gameLayout =new GridLayout(CATEGORY_ROW, CATEGORY_COL);
+        final int CATEGORY_COL = 5;
+        GridLayout gameLayout = new GridLayout(CATEGORY_ROW, CATEGORY_COL);
         middlePanel.setLayout(gameLayout);
-        for (int j = 0; j < CATEGORY_ROW; j++) {
-            for(int i = 1; i <= CATEGORY_COL;i++) {
 
+            for(int i = 0; i <= CATEGORY_COL;i++) {
+                    
                     JButton button = new JButton("Button" + i);
                     button.setBackground(Color.PINK);
                     middlePanel.add(button);
+                    //botonesCategoria.add(button);
+
+                    botonesCategoria[i] = button;
             }
-        }
+        
 
     }
     private void addPanels() {
@@ -111,8 +117,6 @@ public class TableroView extends JFrame {
         this.add(topPanel);
         this.add(middlePanel);
         this.add(bottomPanel);
-        
-        
-        
+
     }
 }
