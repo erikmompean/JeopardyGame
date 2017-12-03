@@ -1,5 +1,5 @@
-quien es napoleon?;a;b;c;0;100
-quien es napoleon?;a;b;c;1;200
-quien es napoleon?;a;b;c;2;300
-quien es napoleon?;a;b;c;0;400
-quien es napoleon?;a;b;c;1;500
+En que guerra participó Juana de Arco?;a.La guerra de los 100 años;b.La guerra de los 30 Años;c.Primera Cruzada;0;100
+Cuál era la capital del Imperio Inca?;a.Quito;b.Cuzo;c.Lima;1;200
+Cómo se llamaba el padre de Alejandro Magno?;a.Leonidas;b.Filipo I de Grecia;c.Filipo II de Macedonia;2;300
+Quién fue el primer emperador romano?;a.Cesar Augusto;b.Julio Cesar;c.Enrique Inglesias;0;400
+Qué Rey encargó "Las Meninas"?;a.Felipe II;b.Felipe IV;c.Carlos III;1;500

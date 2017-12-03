@@ -1,5 +1,5 @@
-como se llama el protagonista?;a;b;c;1;100
-como se llama el protagonista?;a;b;c;2;200
-como se llama el protagonista?;a;b;c;0;300
-como se llama el protagonista?;a;b;c;1;400
-como se llama el protagonista?;a;b;c;2;500
+Cual es el lema de la casa Lannister?;a.Un Lannister siempre paga sus deudas;b.Oye mi rugido;c.Si hay que comer se come;1;100
+Adónde va Samwell Tarly para formarse como maestre?;a.Salamanca;b.Al castillo Negro;c.Ciudadela;2;200
+Quién fue el predecesor de Eddard Stark como Mano del Rey?;a.Jon Arryn;b.Jaime Lannister;c.Ormund;0;300
+Quién fue el primero en autoproclamarse Khal tras la muerte de Khal Drogo?;a.Moro;b.Pono;c.Tono;1;400
+Cómo se llamaba el profesor de esgrima de Arya Stark?;a.Antonio Manuel;b.Leo Lefford;c.Syrio Forel;2;500

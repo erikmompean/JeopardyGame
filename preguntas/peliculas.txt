@@ -1,5 +1,5 @@
-quien es Paul Walker;a;b;c;0;100
-quien es Paul Walker;a;b;c;1;200
-quien es Paul Walker;a;b;c;2;300
-quien es Paul Walker;a;b;c;0;400
-quien es Paul Walker;a;b;c;1;500
+Completa la frase de Han Solo: "No hay recompensa que...;a.Compense esto;b.valga la pena si mueres;c.compense soportarte;0;100
+Cuál es la última película que dirigió Sergio Leone?;a.Hasta que llego su hora;b.Erase una vez en America;c.El Bueno,el Feo, el Malo;1;200
+Quién dirigió 'El club de los poetas muertos'?;a.Gus Van Sant;b.Robert Benton;c.Peter Weir;2;300
+Quien es Paul Walker;a.Actor Fast and Furius;b.Fue presidente de los estados unidos;c.Director de cine;0;400
+Cómo se llama el horrible vecino de 'Toy Story'?;a.Tommy;b.Sid;c.Max;1;500

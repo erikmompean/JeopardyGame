@@ -1,5 +1,5 @@
-que hacen las plantas;a;b;c;0;100
-que hacen las plantas;a;b;c;1;200
-que hacen las plantas;a;b;c;2;300
-que hacen las plantas;a;b;c;0;400
-que hacen las plantas;a;b;c;1;500
+Son un conjunto de membranas que protegen al sistema nervioso;a.Meninges;b.Tejidos;c.Neuronas;0;100
+Coordina los movimientos y postura del cuerpo;a.Cerebro;b.Cerebelo;c.Bulbo Raquidio;1;200
+Es una hormona que estimula la producción de leche materna;a.Oxitocina;b.Tiroxina;c.Prolactina;2;300
+Tiene función endocrina;a.Hipotalamo;b.Amigdala Cerebral;c.Sistema limbico;0;400
+Las bases nitrogenadas del ARN son;a.Adenina,guanina,citosina y timina;b.Adenina,guanina,citosina y uracilo;c.Adenina,timina, citosina y uracilo;1;500
