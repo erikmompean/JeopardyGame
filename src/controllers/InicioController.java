@@ -5,12 +5,16 @@
  */
 package controllers;
 
+import DAO.CategoriasDAO;
+import DAO.CategoriasDAOImp;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import models.Jugador;
+import models.TableroModel;
 import views.Inicio;
 import views.TableroView;
-
+import models.Categoria;
 /**
  *
  * @author Manel
@@ -37,10 +41,17 @@ public class InicioController implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         String name1 = viewInicio.player1.getText();
         jugador1 = new Jugador(name1);
+        
         String name2= viewInicio.player2.getText();
         jugador2= new Jugador(name2);
-        TableroView tableroView = new TableroView("Jeopardy en marcha");
-        ControllerPartida controllerP = new ControllerPartida(jugador1, jugador2, tableroView);
+        
+        CategoriasDAO dao = new CategoriasDAOImp();
+        ArrayList<Categoria> categorias = dao.cargarTodas();
+        
+        TableroView vTablero = new TableroView("Jeopardy en marcha");
+        
+        TableroModel mTablero = new TableroModel(categorias, jugador1, jugador2);
+        ControllerPartida controllerP = new ControllerPartida(jugador1, jugador2, vTablero, mTablero);
         viewInicio.dispose();
     }
 
