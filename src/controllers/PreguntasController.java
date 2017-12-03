@@ -5,10 +5,26 @@
  */
 package controllers;
 
+import models.Pregunta;
+import views.PreguntaView;
+
 /**
  *
  * @author Manel
  */
 public class PreguntasController {
-    //Julen
+    PreguntaView vistaPregunta;
+    Pregunta mPregunta;
+
+    public PreguntasController(PreguntaView vistaPregunta, Pregunta mPregunta) {
+        this.vistaPregunta = vistaPregunta;
+        this.mPregunta = mPregunta;
+        onCreate();
+    }
+
+    private void onCreate() {
+        vistaPregunta.vPregunta.setText(mPregunta.getPregunta());
+    }
+    
+    
 }

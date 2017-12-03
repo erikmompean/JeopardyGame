@@ -13,12 +13,18 @@ import java.util.HashMap;
  */
 public class Categoria {
     //Manel
+    int id;
     String nombre;
     HashMap<Integer, Pregunta> preguntas;
 
-    public Categoria(String nombre, HashMap<Integer, Pregunta> preguntas) {
+    public Categoria(int id, String nombre, HashMap<Integer, Pregunta> preguntas) {
+        this.id = id;
         this.nombre = nombre;
         this.preguntas = preguntas;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNombre() {

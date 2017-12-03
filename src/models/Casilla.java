@@ -5,49 +5,27 @@
  */
 package models;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author Manel
  */
 public class Casilla {
     //Erik
-    final int NUMERO_MAXIMO_DE_RESPUESTAS = 4;
-    int puntuacion, id, respuesta;
-    String pregunta;
-    String[] respuestas =  new String[NUMERO_MAXIMO_DE_RESPUESTAS];
+    private int columna;
+    private int fila;
+    private JButton button;
+    private Pregunta pregunta;
 
-    public Casilla( int id, int puntuacion,String pregunta, int respuesta, String respuesta1, String[] respuestas ) {
-        this.puntuacion = puntuacion;
-        this.id = id;
-        this.respuesta = respuesta;
+    public Casilla(int columna, int fila, JButton button, Pregunta pregunta) {
+        this.columna = columna;
+        this.fila = fila;
+        this.button = button;
         this.pregunta = pregunta;
-        if (respuestas.length == NUMERO_MAXIMO_DE_RESPUESTAS){
-            for(int i = 0; i < respuestas.length ;i++){
-                this.respuestas[i] = respuestas[i];
-            }
-        }/*else{
-            //TODO error system
-        }*/
-    }
-
-    public int getPuntuacion() {
-        return puntuacion;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public int getRespuesta() {
-        return respuesta;
-    }
-
-    public String getPregunta() {
-        return pregunta;
-    }
-
-    public String[] getRespuestas() {
-        return respuestas;
     }
     
+    public void setPunutacion(int puntuacion){
+        button.setText(String.valueOf(puntuacion));
+    }
 }

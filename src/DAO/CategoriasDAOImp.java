@@ -50,6 +50,7 @@ public class CategoriasDAOImp implements CategoriasDAO {
     public ArrayList<Categoria> crearCategorias(ArrayList<Path> paths){
 
         ArrayList<Categoria> categorias = new ArrayList<>();
+        int idCategoria = 0;
         for (Path file : paths) {
             BufferedReader br = null;
             try {
@@ -67,19 +68,19 @@ public class CategoriasDAOImp implements CategoriasDAO {
                     //añadimos los datos que se encuentran el la posicion 1,2,3 del array aux en respostes
                     String[] respostes = {aux[1], aux[2], aux[3]};
                     //creamos una pregunta
-                    Pregunta pregunta = new Pregunta(counter, aux[0], respostes, Integer.parseInt(aux[5]));
-                    
-                    counter++;
-                        
+                    Pregunta pregunta = new Pregunta(counter, aux[0], respostes, Integer.parseInt(aux[4]),Integer.parseInt(aux[5]));
+                      
                     preguntas.put(counter, pregunta);
+                    counter++;
 
                 }
 
                 String nombreFichero = file.getFileName().toString();
                 String nombreCategoria = nombreFichero.substring(0, nombreFichero.lastIndexOf("."));
 
-                Categoria categoriaNueva = new Categoria(nombreCategoria, preguntas);
+                Categoria categoriaNueva = new Categoria(idCategoria, nombreCategoria, preguntas);
                 categorias.add(categoriaNueva);
+                idCategoria++;
 
             } catch (IOException ex) {
                 System.out.println("--------");

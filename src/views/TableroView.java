@@ -26,15 +26,21 @@ import javax.swing.border.Border;
  */
 public class TableroView extends JFrame {
 
-    final int CATEGORIAS = 6;
-    final int COLUMNS = 6;
-    final int ROWS = 5;
+    public final int CATEGORIAS = 6;
+    public final int COLUMNS = 6;
+    public final int ROWS = 5;
     JPanel topPanel;
     JPanel middlePanel;
     JPanel bottomPanel;
+    
+    public JLabel playerLeftName;
+    public JLabel playerRightName;
+    
+    public JLabel scoreLeft;
+    public JLabel scoreRight;
     //public  Queue<JButton> botonesCategoria = new LinkedList<>();
     public JButton[] botonesCategoria = new JButton[CATEGORIAS];
-    JButton[][] allButtons = new JButton[COLUMNS][ROWS];
+    public JButton[][] allButtons = new JButton[COLUMNS][ROWS];
     final static int MAXGAP = 20;
 
     public TableroView(String title){
@@ -57,18 +63,18 @@ public class TableroView extends JFrame {
         JPanel rightFlow = new JPanel();
         int anchuraTablero = this.getContentPane().getWidth();
         topPanel.setPreferredSize(new Dimension(anchuraTablero,50));
-        JLabel playerLeftName = new JLabel("Player1");
-        JLabel playerRightName = new JLabel("Player2");
+        playerLeftName = new JLabel("Player1");
+        playerRightName = new JLabel("Player2");
 
-        JLabel puntuacion1 = new JLabel("1000");
-        JLabel puntuacion2 = new JLabel("3000");
+        scoreLeft = new JLabel();
+        scoreRight = new JLabel();
 
         topPanel.add(leftFlow, BorderLayout.WEST);
         topPanel.add(rightFlow, BorderLayout.EAST);
         leftFlow.add(playerLeftName);
-        leftFlow.add(puntuacion1);
+        leftFlow.add(scoreLeft);
 
-        rightFlow.add(puntuacion2);
+        rightFlow.add(scoreRight);
         rightFlow.add(playerRightName);
 
 
@@ -79,12 +85,13 @@ public class TableroView extends JFrame {
         GridLayout gameLayout =new GridLayout(5, 6);
         bottomPanel.setLayout(gameLayout);
         for (int j = 0; j < ROWS; j++) {
-            for(int i = 1; i <= COLUMNS;i++) {
+            for(int i = 0; i < COLUMNS;i++) {
 
                 JButton button = new JButton("Button" + i);
                 button.setBackground(Color.lightGray);
                 button.setPreferredSize(new Dimension(200, 150));
                 bottomPanel.add(button);
+                allButtons[i][j] = button;
             }
         }
 

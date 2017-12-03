@@ -5,21 +5,27 @@
  */
 package controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import javax.swing.JButton;
 import models.Categoria;
 import models.Jugador;
+import models.Pregunta;
 import models.TableroModel;
+import views.PreguntaView;
 import views.TableroView;
 
 /**
  *
  * @author Manel
  */
-public class ControllerPartida {
+public class ControllerPartida implements ActionListener{
     Jugador player1;
     Jugador player2;
     TableroView vTablero;
     TableroModel mTablero;
-    
+    Pregunta preguntaDelBoton;
     public ControllerPartida(Jugador player1, Jugador player2, TableroView vTablero, TableroModel mTablero) {
         this.player1 = player1;
         this.player2 = player2;
@@ -31,6 +37,8 @@ public class ControllerPartida {
     
     private void onCreate(){
         insertarCategorias();
+        insertarJugadores();
+        insertarPreguntas();
     }
 
     /**
@@ -44,5 +52,36 @@ public class ControllerPartida {
             i++;
         }
     }
-   
+    
+    /**
+     * Este metodo se encargade cojer los jugadores y insertar su nombre y su puntuacion
+     * en el tablero
+     */
+    private void insertarJugadores(){
+        vTablero.playerLeftName.setText(player1.getNickName());
+        vTablero.playerRightName.setText(player2.getNickName());
+        vTablero.scoreLeft.setText(String.valueOf(player1.getPuntuacion()));
+        vTablero.scoreRight.setText(String.valueOf(player2.getPuntuacion()));
+    }
+
+    private void insertarPreguntas(){
+        JButton allButtons[][] = vTablero.allButtons;
+        for(Categoria categoria: mTablero.getCategorias()){
+            System.out.println(categoria.getNombre());
+            for (int j = 0; j < vTablero.ROWS ; j++) {
+                JButton button = allButtons[categoria.getId()][j];
+                HashMap<Integer, Pregunta> preguntas;
+                preguntas = categoria.getPreguntas();
+                preguntaDelBoton = preguntas.get(j);
+                button.setText(String.valueOf(preguntaDelBoton.getPuntuacion()));
+                button.addActionListener(this);
+            }
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        PreguntaView vPregunta = new PreguntaView();
+        PreguntasController preguntaSeleccionada = new PreguntasController(vPregunta, preguntaDelBoton);
+    }
 }

@@ -18,11 +18,32 @@ public class Pregunta {
     int correcta;
     int puntuacion;
 
-    public Pregunta(int id, String pregunta, String[] respuestas, int correcta) {
+    public Pregunta(int id, String pregunta, String[] respuestas, int correcta, int puntuacion) {
         this.id = id;
         this.pregunta = pregunta;
         this.respuestas = respuestas;
         this.correcta = correcta;
+        this.puntuacion = puntuacion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public String[] getRespuestas() {
+        return respuestas;
+    }
+
+    public int getCorrecta() {
+        return correcta;
+    }
+
+    public int getPuntuacion() {
+        return puntuacion;
     }
     
     

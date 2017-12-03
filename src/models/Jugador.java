@@ -16,7 +16,7 @@ public class Jugador {
 
     public Jugador(String nickName) {
         this.nickName = nickName;
-        this.puntuacion =0;
+        this.puntuacion = 0;
     }
 
     public String getNickName() {
