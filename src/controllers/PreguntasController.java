@@ -16,8 +16,8 @@ public class PreguntasController {
     PreguntaView vistaPregunta;
     Pregunta mPregunta;
 
-    public PreguntasController(PreguntaView vistaPregunta, Pregunta mPregunta) {
-        this.vistaPregunta = vistaPregunta;
+    public PreguntasController(Pregunta mPregunta) {
+        this.vistaPregunta = new PreguntaView();
         this.mPregunta = mPregunta;
         onCreate();
     }

@@ -6,6 +6,7 @@
 package views;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,6 +39,7 @@ public class PreguntaView extends JFrame{
         vPregunta = new JLabel("La raiz cuadrada de 10 al cubo?");
         vPregunta.setFont(vPregunta.getFont().deriveFont(30.0f));
         
+        vPregunta.setPreferredSize(new Dimension(1200,100));
         Border margin = new EmptyBorder(20,20,20,20);
         
         vPregunta.setBorder(new CompoundBorder(vPregunta.getBorder(), margin));

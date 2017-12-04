@@ -25,7 +25,7 @@ public class ControllerPartida implements ActionListener{
     Jugador player2;
     TableroView vTablero;
     TableroModel mTablero;
-    Pregunta preguntaDelBoton;
+    
     public ControllerPartida(Jugador player1, Jugador player2, TableroView vTablero, TableroModel mTablero) {
         this.player1 = player1;
         this.player2 = player2;
@@ -65,23 +65,45 @@ public class ControllerPartida implements ActionListener{
     }
 
     private void insertarPreguntas(){
-        JButton allButtons[][] = vTablero.allButtons;
+        
         for(Categoria categoria: mTablero.getCategorias()){
             System.out.println(categoria.getNombre());
+            
             for (int j = 0; j < vTablero.ROWS ; j++) {
-                JButton button = allButtons[categoria.getId()][j];
                 HashMap<Integer, Pregunta> preguntas;
                 preguntas = categoria.getPreguntas();
-                preguntaDelBoton = preguntas.get(j);
-                button.setText(String.valueOf(preguntaDelBoton.getPuntuacion()));
-                button.addActionListener(this);
+                Pregunta preguntaDelBoton = preguntas.get(j);
+                vTablero.allButtons[categoria.getId()][j].setText(String.valueOf(preguntaDelBoton.getPuntuacion()));
+                vTablero.allButtons[categoria.getId()][j].addActionListener(this);
             }
+            
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        PreguntaView vPregunta = new PreguntaView();
-        PreguntasController preguntaSeleccionada = new PreguntasController(vPregunta, preguntaDelBoton);
+
+        Pregunta pregunta = null;
+        boolean encontrado = false;
+        for(Categoria categoria: mTablero.getCategorias()){
+            System.out.println(categoria.getNombre());
+            
+            for (int j = 0; j < vTablero.ROWS ; j++) {
+                HashMap<Integer, Pregunta> preguntas;
+                preguntas = categoria.getPreguntas();
+                pregunta = preguntas.get(j);
+                if(e.getSource() == vTablero.allButtons[categoria.getId()][j]){
+                    encontrado = true;
+                    break;
+                }
+                
+            }
+            if(encontrado)
+                break;
+            
+        }
+        PreguntasController preguntaSeleccionada = new PreguntasController(pregunta);
+        //cierrre ventana actual???
+        
     }
 }
