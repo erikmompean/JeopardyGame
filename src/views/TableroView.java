@@ -8,6 +8,7 @@ package views;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -65,10 +66,20 @@ public class TableroView extends JFrame {
         topPanel.setPreferredSize(new Dimension(anchuraTablero,50));
         playerLeftName = new JLabel("Player1");
         playerRightName = new JLabel("Player2");
-
+        
+        Font f = playerLeftName.getFont();
+        playerLeftName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));   
+        playerRightName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
+                
+        playerLeftName.setFont(playerLeftName.getFont().deriveFont(15.0f));
+        playerRightName.setFont(playerLeftName.getFont().deriveFont(15.0f));
+        
         scoreLeft = new JLabel();
         scoreRight = new JLabel();
-
+        
+        scoreLeft.setFont(playerLeftName.getFont().deriveFont(13.0f));
+        scoreRight.setFont(playerLeftName.getFont().deriveFont(13.0f));
+        
         topPanel.add(leftFlow, BorderLayout.WEST);
         topPanel.add(rightFlow, BorderLayout.EAST);
         leftFlow.add(playerLeftName);
@@ -77,12 +88,11 @@ public class TableroView extends JFrame {
         rightFlow.add(scoreRight);
         rightFlow.add(playerRightName);
 
-
     }
 
     private void createBottomPanel() {
         bottomPanel = new JPanel();
-        GridLayout gameLayout =new GridLayout(5, 6);
+        GridLayout gameLayout = new GridLayout(5, 6);
         bottomPanel.setLayout(gameLayout);
         for (int j = 0; j < ROWS; j++) {
             for(int i = 0; i < COLUMNS;i++) {
@@ -113,9 +123,8 @@ public class TableroView extends JFrame {
 
                     botonesCategoria[i] = button;
             }
-        
-
     }
+    
     private void addPanels() {
         createTopPanel();
         createMiddlePanel();

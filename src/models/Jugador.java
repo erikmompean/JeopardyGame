@@ -13,10 +13,12 @@ public class Jugador {
     //Manel
     String nickName;
     int puntuacion;
-
+    boolean esMiTurno;
+    
     public Jugador(String nickName) {
         this.nickName = nickName;
         this.puntuacion = 0;
+        boolean esMiTurno = false;
     }
 
     public String getNickName() {
@@ -35,6 +37,14 @@ public class Jugador {
         this.puntuacion = puntuacion;
     }
 
+    public boolean isEsMiTurno() {
+        return esMiTurno;
+    }
+
+    public void setEsMiTurno(boolean esMiTurno) {
+        this.esMiTurno = esMiTurno;
+    }
+    
     @Override
     public String toString() {
         return "Jugador{" + "nickName=" + nickName + ", puntuacion=" + puntuacion + '}';

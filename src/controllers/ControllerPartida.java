@@ -5,10 +5,12 @@
  */
 package controllers;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import models.Categoria;
 import models.Jugador;
 import models.Pregunta;
@@ -21,14 +23,14 @@ import views.TableroView;
  * @author Manel
  */
 public class ControllerPartida implements ActionListener{
-    Jugador player1;
-    Jugador player2;
+    Jugador jugador1;
+    Jugador jugador2;
     TableroView vTablero;
     TableroModel mTablero;
     
     public ControllerPartida(Jugador player1, Jugador player2, TableroView vTablero, TableroModel mTablero) {
-        this.player1 = player1;
-        this.player2 = player2;
+        this.jugador1 = player1;
+        this.jugador2 = player2;
         this.vTablero = vTablero;
         this.mTablero = mTablero;
         
@@ -36,6 +38,7 @@ public class ControllerPartida implements ActionListener{
     }
     
     private void onCreate(){
+        iniciarPartida();
         insertarCategorias();
         insertarJugadores();
         insertarPreguntas();
@@ -58,10 +61,10 @@ public class ControllerPartida implements ActionListener{
      * en el tablero
      */
     private void insertarJugadores(){
-        vTablero.playerLeftName.setText(player1.getNickName());
-        vTablero.playerRightName.setText(player2.getNickName());
-        vTablero.scoreLeft.setText(String.valueOf(player1.getPuntuacion()));
-        vTablero.scoreRight.setText(String.valueOf(player2.getPuntuacion()));
+        vTablero.playerLeftName.setText(jugador1.getNickName());
+        vTablero.playerRightName.setText(jugador2.getNickName());
+        vTablero.scoreLeft.setText(String.valueOf(jugador1.getPuntuacion()));
+        vTablero.scoreRight.setText(String.valueOf(jugador2.getPuntuacion()));
     }
 
     private void insertarPreguntas(){
@@ -102,8 +105,45 @@ public class ControllerPartida implements ActionListener{
                 break;
             
         }
-        PreguntasController preguntaSeleccionada = new PreguntasController(pregunta);
+        //PreguntasController preguntaSeleccionada = new PreguntasController(pregunta);
         //cierrre ventana actual???
+        Object[] options = {pregunta.getRespuestas()[0], pregunta.getRespuestas()[1], pregunta.getRespuestas()[2]}; 
+        int n = JOptionPane.showOptionDialog(vTablero, pregunta.getPregunta(), 
+                "Pregunta", 
+                JOptionPane.YES_NO_CANCEL_OPTION, 
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options, 
+                options[2]
+        );
+        
+        cambiarTurno();
         
     }
+
+    private void cambiarTurno() {
+        Font f = vTablero.playerLeftName.getFont();
+        
+        if (jugador1.isEsMiTurno()) {
+            jugador1.setEsMiTurno(false);
+            jugador2.setEsMiTurno(true);
+            
+            vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
+            vTablero.playerRightName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+        } else {
+            jugador1.setEsMiTurno(true);
+            jugador2.setEsMiTurno(false);
+            
+            vTablero.playerRightName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
+            vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+        }
+    }
+
+    private void iniciarPartida() {
+        jugador1.setEsMiTurno(true);
+        
+        Font f = vTablero.playerLeftName.getFont();
+        vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+    }
+    
 }

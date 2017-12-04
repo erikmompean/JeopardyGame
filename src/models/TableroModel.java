@@ -15,31 +15,14 @@ import javax.swing.Timer;
 public class TableroModel {
     //Erik
     ArrayList<Categoria> categorias;
-    Timer contador;
-    Jugador jugador1, jugador2;
 
     public TableroModel(ArrayList<Categoria> categorias, Jugador jugador1, Jugador jugador2) {
         this.categorias = categorias;
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
         
     }
 
     public ArrayList<Categoria> getCategorias() {
         return categorias;
     }
-    
-    public Timer getContador() {
-        return contador;
-    }
-
-    public Jugador getJugador1() {
-        return jugador1;
-    }
-
-    public Jugador getJugador2() {
-        return jugador2;
-    }
-    
     
 }
