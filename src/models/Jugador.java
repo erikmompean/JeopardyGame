@@ -20,7 +20,7 @@ public class Jugador {
         this.puntuacion = 0;
         boolean esMiTurno = false;
     }
-
+    
     public String getNickName() {
         return nickName;
     }
@@ -36,7 +36,11 @@ public class Jugador {
     public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
     }
-
+    
+    public void sumarPuntuacion(int nuevaPuntuacion){
+        puntuacion = puntuacion + nuevaPuntuacion;
+    }
+    
     public boolean isEsMiTurno() {
         return esMiTurno;
     }

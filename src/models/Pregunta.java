@@ -46,9 +46,12 @@ public class Pregunta {
         return puntuacion;
     }
     
+    public void doubleRound(){
+        puntuacion = puntuacion * 2;
+    }
+    
     public boolean esRespuestaCorrecta(int respuestaUsuario){
         boolean respuestaCorrecta = false;
-        respuestaUsuario--;
         if (respuestaUsuario == correcta) {
             respuestaCorrecta = true;
         }

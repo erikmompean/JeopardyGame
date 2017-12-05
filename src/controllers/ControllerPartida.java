@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -88,6 +89,7 @@ public class ControllerPartida implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         Pregunta pregunta = null;
+        JButton boton = null;
         boolean encontrado = false;
         for(Categoria categoria: mTablero.getCategorias()){
             System.out.println(categoria.getNombre());
@@ -95,8 +97,9 @@ public class ControllerPartida implements ActionListener{
             for (int j = 0; j < vTablero.ROWS ; j++) {
                 HashMap<Integer, Pregunta> preguntas;
                 preguntas = categoria.getPreguntas();
-                pregunta = preguntas.get(j);
                 if(e.getSource() == vTablero.allButtons[categoria.getId()][j]){
+                    boton = vTablero.allButtons[categoria.getId()][j];
+                    pregunta = preguntas.get(j);
                     encontrado = true;
                     break;
                 }
@@ -108,6 +111,94 @@ public class ControllerPartida implements ActionListener{
         }
         //PreguntasController preguntaSeleccionada = new PreguntasController(pregunta);
         //cierrre ventana actual???
+        int respuestaUsuario = mostrarVistaPregunta(pregunta);
+        administrarRonda(boton, pregunta, respuestaUsuario);
+        cambiarTurno();
+
+    }
+
+    private void cambiarTurno() {
+        Font f = vTablero.playerLeftName.getFont();
+        
+        if (jugador1.isEsMiTurno()) {
+            
+            jugador1.setEsMiTurno(false);
+            jugador2.setEsMiTurno(true);
+            
+            vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
+            vTablero.playerRightName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+        } else if(jugador2.isEsMiTurno()){
+            jugador1.setEsMiTurno(true);
+            jugador2.setEsMiTurno(false);
+            
+            vTablero.playerRightName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
+            vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+            
+            ronda++;
+            comprobarDoubleRound();
+            comprobarGanador();
+        }
+    }
+
+    private void iniciarPartida() {
+        jugador1.setEsMiTurno(true);
+        
+        Font f = vTablero.playerLeftName.getFont();
+        vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+    }
+
+    private void administrarRonda(JButton boton, Pregunta pregunta, int respuesta) {
+        boton.setEnabled(false);
+        if(pregunta.esRespuestaCorrecta(respuesta)) {
+            Color colorAcierto = Color.decode("#B2FF59");
+            boton.setBackground(colorAcierto);
+            if(jugador1.isEsMiTurno()){
+                
+                jugador1.sumarPuntuacion(pregunta.getPuntuacion());
+                vTablero.scoreLeft.setText(String.valueOf(jugador1.getPuntuacion()));
+            } else {
+                jugador2.sumarPuntuacion(pregunta.getPuntuacion());
+                vTablero.scoreRight.setText(String.valueOf(jugador2.getPuntuacion()));
+            }
+        }else{
+            Color colorFallo = Color.decode("#FF7043");
+            boton.setBackground(colorFallo);
+        }
+    }
+
+    private void comprobarDoubleRound() {
+        System.out.println("Ronda: "+ ronda);
+        if(ronda == 10){
+            JOptionPane.showMessageDialog(vTablero, "Ha empezado la Jeopardy Double Round, ahora las preguntas valen el doble!!", "Ultima Ronda!", JOptionPane.WARNING_MESSAGE);
+            iniciarDoubleRound();
+        }
+    }
+
+    private void iniciarDoubleRound() {
+        for(Categoria categoria: mTablero.getCategorias()){
+            
+            for (int j = 0; j < vTablero.ROWS ; j++) {
+                HashMap<Integer, Pregunta> preguntas;
+                preguntas = categoria.getPreguntas();
+                Pregunta pregunta= preguntas.get(j);
+                pregunta.doubleRound();
+                vTablero.allButtons[categoria.getId()][j].setText(String.valueOf(pregunta.getPuntuacion()));
+            }
+            
+        }
+    }
+
+    private void comprobarGanador() {
+        if (ronda >= 11){
+            if (jugador1.getPuntuacion() == jugador2.getPuntuacion()){
+                empezarFinalJeopardyRound();
+            } else {
+                PodiumController podium = new PodiumController(jugador1, jugador2);
+            }
+        }
+    }
+    
+    private int mostrarVistaPregunta(Pregunta pregunta){
         Object[] options = {pregunta.getRespuestas()[0], pregunta.getRespuestas()[1], pregunta.getRespuestas()[2]}; 
         int respuestaUsuario = JOptionPane.showOptionDialog(vTablero, pregunta.getPregunta(), 
                 "Pregunta", 
@@ -118,42 +209,22 @@ public class ControllerPartida implements ActionListener{
                 options[2]
         );
         
-        if(pregunta.esRespuestaCorrecta(respuestaUsuario)) {
-            if(jugador1.isEsMiTurno()){
-                jugador1.setPuntuacion(ronda);
+        return respuestaUsuario;
+    }
+
+    private void empezarFinalJeopardyRound() {
+        
+        for (int j = 0; j < vTablero.ROWS ; j++) {
+            for(Categoria categoria: mTablero.getCategorias()){
+            
+                HashMap<Integer, Pregunta> preguntas;
+                preguntas = categoria.getPreguntas();
+                Pregunta pregunta= preguntas.get(j);
+                mostrarVistaPregunta(pregunta);
+
             }
         }
-        
-        cambiarTurno();
-        
     }
-
-    private void cambiarTurno() {
-        Font f = vTablero.playerLeftName.getFont();
-        
-        if (jugador1.isEsMiTurno()) {
-            jugador1.setEsMiTurno(false);
-            jugador2.setEsMiTurno(true);
-            
-            vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
-            vTablero.playerRightName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
-        } else {
-            jugador1.setEsMiTurno(true);
-            jugador2.setEsMiTurno(false);
-            
-            vTablero.playerRightName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
-            vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
-            
-            ronda++;
-            System.out.println(ronda);
-        }
-    }
-
-    private void iniciarPartida() {
-        jugador1.setEsMiTurno(true);
-        
-        Font f = vTablero.playerLeftName.getFont();
-        vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
-    }
+    
     
 }

@@ -1,5 +1,5 @@
 Cual es la capital de Espana?;a.Madrid;b.Paris;c.Berlin;0;100
-Cual es la capital de Alemania?;a.Madrid;b.Paris;c.Berlin;1;200
+Cual es la capital de Alemania?;a.Madrid;b.Paris;c.Berlin;2;200
 Cual es la capital de Francia?;a.Madrid;b.Berlin;c.Paris;2;300
 Cual es la capital de Portugal?;a.Lisboa;b.Manila;c.Pekin;0;400
 Cual es la capital de Japon?;a.Madrid;b.Pekin;c.Berlin;1;500

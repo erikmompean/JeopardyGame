@@ -98,7 +98,8 @@ public class TableroView extends JFrame {
             for(int i = 0; i < COLUMNS;i++) {
 
                 JButton button = new JButton("Button" + i);
-                button.setBackground(Color.lightGray);
+                Color jeopardyBlue = Color.decode("#29B6F6");
+                button.setBackground(jeopardyBlue);
                 button.setPreferredSize(new Dimension(200, 150));
                 bottomPanel.add(button);
                 allButtons[i][j] = button;
@@ -120,7 +121,8 @@ public class TableroView extends JFrame {
                     button.setBackground(Color.PINK);
                     middlePanel.add(button);
                     //botonesCategoria.add(button);
-
+                    Color color = Color.decode("#FFFF00");
+                    button.setBackground(color);
                     botonesCategoria[i] = button;
             }
     }
