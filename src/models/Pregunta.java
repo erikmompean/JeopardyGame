@@ -46,7 +46,14 @@ public class Pregunta {
         return puntuacion;
     }
     
-    
+    public boolean esRespuestaCorrecta(int respuestaUsuario){
+        boolean respuestaCorrecta = false;
+        respuestaUsuario--;
+        if (respuestaUsuario == correcta) {
+            respuestaCorrecta = true;
+        }
+       return respuestaCorrecta;
+    }
     
     
 }

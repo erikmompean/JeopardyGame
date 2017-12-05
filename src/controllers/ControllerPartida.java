@@ -27,6 +27,7 @@ public class ControllerPartida implements ActionListener{
     Jugador jugador2;
     TableroView vTablero;
     TableroModel mTablero;
+    int ronda = 1;
     
     public ControllerPartida(Jugador player1, Jugador player2, TableroView vTablero, TableroModel mTablero) {
         this.jugador1 = player1;
@@ -108,7 +109,7 @@ public class ControllerPartida implements ActionListener{
         //PreguntasController preguntaSeleccionada = new PreguntasController(pregunta);
         //cierrre ventana actual???
         Object[] options = {pregunta.getRespuestas()[0], pregunta.getRespuestas()[1], pregunta.getRespuestas()[2]}; 
-        int n = JOptionPane.showOptionDialog(vTablero, pregunta.getPregunta(), 
+        int respuestaUsuario = JOptionPane.showOptionDialog(vTablero, pregunta.getPregunta(), 
                 "Pregunta", 
                 JOptionPane.YES_NO_CANCEL_OPTION, 
                 JOptionPane.QUESTION_MESSAGE,
@@ -116,6 +117,12 @@ public class ControllerPartida implements ActionListener{
                 options, 
                 options[2]
         );
+        
+        if(pregunta.esRespuestaCorrecta(respuestaUsuario)) {
+            if(jugador1.isEsMiTurno()){
+                jugador1.setPuntuacion(ronda);
+            }
+        }
         
         cambiarTurno();
         
@@ -136,6 +143,9 @@ public class ControllerPartida implements ActionListener{
             
             vTablero.playerRightName.setFont(f.deriveFont(f.getStyle() & ~Font.BOLD));
             vTablero.playerLeftName.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+            
+            ronda++;
+            System.out.println(ronda);
         }
     }
 
