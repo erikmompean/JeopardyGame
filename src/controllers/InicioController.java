@@ -48,7 +48,7 @@ public class InicioController implements ActionListener {
         String name2 = viewInicio.player2.getText();
         jugador2 = new Jugador(name2);
 
-        if (name1.length() == 0 || name2.length() == 0 || name1.equals("NickName1") || name2.equals("NickName2")) {
+        if (name1.length() == 0 || name2.length() == 0 || name1.equals("NickName1") || name2.equals("NickName2") || name1.equals(name2)) {
             JOptionPane.showMessageDialog(viewInicio, "Tienes que introducir un numero usuario valido", "Ojo deves introducir tu nombre de usuario :)", JOptionPane.WARNING_MESSAGE);
 
         } else {
